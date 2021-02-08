@@ -73,7 +73,7 @@ def _do_use(rest: list[str]):
 
 VERB_HELP = {
     'help': ('Display this help content', None),
-    'exit': ('Exits Magica', None),
+    'exit': ('Exits Magics', None),
     'use': (f'Use an item ({T.bright_black}use <item>{T.normal}), or use an item on another item ({T.bright_black}use <item> on <item>{T.normal})', None),
     'inspect': (f'Inspect an item closely ({T.bright_black}inspect <item>{T.normal})', f'''{T.italic}Note that the resulting description of an item may change if the item is used.{T.normal}'''),
 }

@@ -1,6 +1,5 @@
 from typing import Optional, Type
 
-
 class Useable:
     @classmethod
     def use(cls, use_on: Optional[Type['Useable']] = None): ...

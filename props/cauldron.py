@@ -6,9 +6,9 @@ from . import Prop
 
 from .. import T
 from ..items import Item
-# from ..player import Player
 from ..essences import Essences, ESSENCE_COLOR, average_color
 from ..interactions import Useable
+from ..knowledge.magic_awareness import MagicAwareness
 
 
 @Prop.add
@@ -19,6 +19,10 @@ class Cauldron(Prop, Useable):
 
     @classmethod
     def use(cls, use_on: Optional[Type['Useable']] = None):
+        from ..player import Player
+        if MagicAwareness.ID not in Player.knowledge:
+            print('You do not know how to use this.')
+            return
         if use_on is None:
             if not cls.contents:
                 print(f'{cls.fmt} is empty, and nothing happens.')
@@ -75,6 +79,7 @@ class Cauldron(Prop, Useable):
         else:
             text += ' contains: ' + ', '.join(f"{v:,} units of {k.fmt}" for k, v in cls.contents.items())
         print(text)
+        MagicAwareness.learn()
 
 
 __all__ = []
